@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -20,10 +19,10 @@ public class Todo implements Serializable {
     private UUID id;
 
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private Date updatedAt;
 
     @Column(name = "status", nullable = false)
     private Boolean status;
@@ -35,14 +34,14 @@ public class Todo implements Serializable {
     }
 
     public Todo(String description) {
-        createdAt = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+        createdAt = new Date();
         updatedAt = null;
         this.status = false;
         this.description = description;
     }
 
     public void Edit(Boolean status, String description) {
-        updatedAt = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+        updatedAt = new Date();
         this.status = status;
         this.description = description;
     }

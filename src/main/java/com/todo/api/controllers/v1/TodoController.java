@@ -2,6 +2,7 @@ package com.todo.api.controllers.v1;
 
 
 import com.todo.api.controllers.MainController;
+import com.todo.api.exceptions.custom.NotFoundException;
 import com.todo.application.interfaces.TodoService;
 import com.todo.application.resources.CreateTodoResource;
 import com.todo.application.resources.UpdateTodoResource;

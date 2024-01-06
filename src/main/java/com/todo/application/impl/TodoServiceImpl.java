@@ -8,10 +8,12 @@ import com.todo.application.resources.ResponseTodoResource;
 import com.todo.application.resources.UpdateTodoResource;
 import com.todo.business.Todo;
 import com.todo.repository.TodoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class TodoServiceImpl implements TodoService {
 
@@ -25,11 +27,13 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public Iterable<ResponseTodoResource> findAll() {
+        log.info("find all todos");
         return mapper.todosToResponseTodoResources(repository.findAll());
     }
 
     @Override
     public ResponseTodoResource findById(UUID id) {
+        log.info("find todo by id");
         return mapper.todoToResponseTodoResource(repository.findById(id).get());
     }
 
@@ -37,6 +41,9 @@ public class TodoServiceImpl implements TodoService {
     public ResponseTodoResource create(CreateTodoResource todo) {
         var model = new Todo(todo.getDescription());
         repository.save(model);
+
+        log.info("create todo");
+
         return mapper.todoToResponseTodoResource(model);
     }
 
@@ -53,6 +60,8 @@ public class TodoServiceImpl implements TodoService {
         model.Edit(todo.getStatus(), todo.getDescription());
         repository.save(model);
 
+        log.info("update todo");
+
         return mapper.todoToResponseTodoResource(model);
     }
 
@@ -65,6 +74,8 @@ public class TodoServiceImpl implements TodoService {
         }
 
         repository.deleteById(id);
+
+        log.info("delete todo");
 
         return true;
     }
