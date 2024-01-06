@@ -34,11 +34,16 @@ public class ApplicationExceptionHandler {
         return new ErrorResponse(false, exception.getMessage(), LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
     }
 
-//    java.util.NoSuchElementException: No value present
     @ExceptionHandler(NoSuchElementException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleMethodNoSuchElementException(NoSuchElementException exception) {
         return new ErrorResponse(false, exception.getMessage(), LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handleMethodException(Exception exception) {
+        return new ErrorResponse(false, "Internal server error", LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
     }
 
 }
