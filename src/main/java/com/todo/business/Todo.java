@@ -31,6 +31,9 @@ public class Todo implements Serializable {
     @Column(name = "description", length = 1000)
     private String description;
 
+    public Todo() {
+    }
+
     public Todo(String description) {
         createdAt = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
         updatedAt = null;

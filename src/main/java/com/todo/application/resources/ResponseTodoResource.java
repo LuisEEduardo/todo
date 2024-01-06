@@ -1,6 +1,14 @@
 package com.todo.application.resources;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.UUID;
 
-public record ResponseTodoResource(UUID id, Boolean status, String description) {
+@Getter
+@Setter
+public class ResponseTodoResource {
+    private UUID id;
+    private Boolean status;
+    private String description;
 }

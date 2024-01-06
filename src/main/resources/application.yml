@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://babar.db.elephantsql.com:5432/svecmbik
-    username: svecmbik
-    password: W1QEKRNE2HH6eAcKcWHbGMQRivJQsYdr
+    url: jdbc:postgresql://ep-wispy-violet-53823986.us-east-2.aws.neon.fl0.io:5432/db-test
+    username: fl0user
+    password: COZL8ANhrT4G
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:
