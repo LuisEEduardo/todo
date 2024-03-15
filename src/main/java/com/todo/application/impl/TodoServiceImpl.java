@@ -69,7 +69,7 @@ public class TodoServiceImpl implements TodoService {
         var exists = repository.existsById(id);
 
         if (!exists) {
-            throw new NotFoundException("todo não encontrado");
+            throw new NotFoundException("todo not found");
         }
 
         repository.deleteById(id);
