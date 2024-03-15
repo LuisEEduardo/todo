@@ -2,9 +2,9 @@ package com.todo.application;
 
 import com.todo.application.interfaces.TodoService;
 import com.todo.application.mapper.TodoMapper;
-import com.todo.application.resources.CreateTodoResource;
+import com.todo.application.resources.RequestCreateTodoResource;
 import com.todo.application.resources.ResponseTodoResource;
-import com.todo.application.resources.UpdateTodoResource;
+import com.todo.application.resources.RequestUpdateTodoResource;
 import com.todo.repository.TodoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -69,7 +69,7 @@ public class TodoServiceImplTest {
     @Test
     @DisplayName("Should create todo with success")
     void shouldCreateTodoWithSuccess() {
-        var todo = new CreateTodoResource();
+        var todo = new RequestCreateTodoResource();
         todo.setDescription("description");
 
         mockedResponseTodoResource.setId(id);
@@ -86,7 +86,7 @@ public class TodoServiceImplTest {
     @Test
     @DisplayName("Should update todo with success")
     void shouldUpdateTodoWithSuccess() {
-        var todo = new UpdateTodoResource();
+        var todo = new RequestUpdateTodoResource();
 
         when(todoService.update(todo)).thenReturn(mockedResponseTodoResource);
 

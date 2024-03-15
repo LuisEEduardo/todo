@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateTodoResource {
+public class RequestCreateTodoResource {
 
     @NotNull(message = "description is not null")
     @NotBlank(message = "description is not blank")

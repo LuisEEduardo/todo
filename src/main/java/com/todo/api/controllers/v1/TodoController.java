@@ -2,14 +2,14 @@ package com.todo.api.controllers.v1;
 
 
 import com.todo.api.controllers.MainController;
-import com.todo.api.exceptions.custom.NotFoundException;
 import com.todo.application.interfaces.TodoService;
-import com.todo.application.resources.CreateTodoResource;
-import com.todo.application.resources.UpdateTodoResource;
+import com.todo.application.resources.RequestCreateTodoResource;
+import com.todo.application.resources.RequestUpdateTodoResource;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,13 +43,13 @@ public class TodoController extends MainController {
 
     @Operation(summary = "Realiza um get", method = "POST")
     @PostMapping()
-    public ResponseEntity<?> create(@RequestBody CreateTodoResource todo) {
+    public ResponseEntity<?> create(@RequestBody @Valid RequestCreateTodoResource todo) {
         return CustomResponse(todoService.create(todo));
     }
 
     @Operation(summary = "Realiza um get", method = "PUT")
     @PutMapping()
-    public ResponseEntity<?> update(@RequestBody UpdateTodoResource todo) {
+    public ResponseEntity<?> update(@RequestBody @Valid RequestUpdateTodoResource todo) {
         return CustomResponse(todoService.update(todo));
     }
 

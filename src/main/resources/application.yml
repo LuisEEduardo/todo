@@ -11,15 +11,3 @@ spring:
 hibernate:
   show_sql: true
   format_sql: true
-
-
-
-#spring.datasource.url=jdbc:postgresql://babar.db.elephantsql.com:5432/svecmbik
-#spring.datasource.username=svecmbik
-#spring.datasource.password=W1QEKRNE2HH6eAcKcWHbGMQRivJQsYdr
-#spring.datasource.driver-class-name=org.postgresql.Driver
-#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-#spring.jpa.hibernate.ddl-auto=create
-#
-#hibernate.show_sql=true
-#hibernate.format_sql=true
