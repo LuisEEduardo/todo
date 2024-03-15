@@ -34,7 +34,10 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public ResponseTodoResource findById(UUID id) {
         log.info("find todo by id");
-        return mapper.todoToResponseTodoResource(repository.findById(id).get());
+
+        var model = repository.findById(id).orElseThrow(() -> new NotFoundException("Todo not found"));
+
+        return mapper.todoToResponseTodoResource(model);
     }
 
     @Override
