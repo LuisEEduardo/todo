@@ -22,7 +22,18 @@ public class SecurityConfiguration {
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
             "/v1/user/authenticate", //url que usaremos para fazer login
-            "/v1/user" //url que usaremos para criar um usuário
+            "/v1/user", //url que usaremos para criar um usuário
+            "/swagger-ui.html",
+            "/swagger-ui/index.html",
+            "/swagger-ui/swagger-ui.css",
+            "/swagger-ui/index.css",
+            "/swagger-ui/swagger-ui-bundle.js",
+            "/swagger-ui/swagger-ui-standalone-preset.js",
+            "/swagger-ui/swagger-initializer.js",
+            "/swagger-ui/favicon-32x32.png",
+            "/swagger-ui/favicon-16x16.png",
+            "/v3/api-docs/swagger-config",
+            "/v3/api-docs"
     };
 
     // Endpoints que requerem autenticação para serem acessados
