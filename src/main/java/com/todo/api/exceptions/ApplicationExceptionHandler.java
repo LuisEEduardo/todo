@@ -1,9 +1,12 @@
 package com.todo.api.exceptions;
 
 import com.todo.api.controllers.genericResponses.ErrorResponse;
+import com.todo.api.exceptions.custom.ForbiddenException;
 import com.todo.api.exceptions.custom.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -51,6 +54,27 @@ public class ApplicationExceptionHandler {
     public ErrorResponse handleMethodException(Exception exception) {
         log.error("handleMethodException => " + exception.getMessage());
         return new ErrorResponse(false, "Internal server error", LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+    }
+
+    @ExceptionHandler(ForbiddenException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorResponse handleForbiddenException(ForbiddenException exception) {
+        log.error("handleForbiddenException => " + exception.getMessage());
+        return new ErrorResponse(false, exception.getMessage(), LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleUsernameNotFoundException(UsernameNotFoundException exception) {
+        log.error("handleUsernameNotFoundException => " + exception.getMessage());
+        return new ErrorResponse(false, exception.getMessage(), LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse handleBadCredentialsException(BadCredentialsException exception) {
+        log.error("handleBadCredentialsException => " + exception.getMessage());
+        return new ErrorResponse(false, "login or password invalid", LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
     }
 
 }

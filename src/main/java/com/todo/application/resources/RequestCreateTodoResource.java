@@ -1,8 +1,8 @@
 package com.todo.application.resources;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +12,6 @@ public class RequestCreateTodoResource {
 
     @NotNull(message = "description is not null")
     @NotBlank(message = "description is not blank")
-    @Max(value = 1000, message = "description have max of 1000 characters")
+    @Size(max = 1000, message = "description have max of 1000 characters")
     private String description;
 }

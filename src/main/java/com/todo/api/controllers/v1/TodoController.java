@@ -26,7 +26,7 @@ public class TodoController extends MainController {
         this.todoService = todoService;
     }
 
-    @Operation(summary = "Realiza um get", method = "GET")
+    @Operation(summary = "Get all todos", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Chamada realizada com sucesso"),
     })
@@ -35,25 +35,25 @@ public class TodoController extends MainController {
         return CustomResponse(todoService.findAll());
     }
 
-    @Operation(summary = "Realiza um get", method = "GET")
+    @Operation(summary = "get by id", method = "GET")
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable UUID id) {
         return CustomResponse(todoService.findById(id));
     }
 
-    @Operation(summary = "Realiza um get", method = "POST")
+    @Operation(summary = "create todo", method = "POST")
     @PostMapping()
     public ResponseEntity<?> create(@RequestBody @Valid RequestCreateTodoResource todo) {
         return CustomResponse(todoService.create(todo));
     }
 
-    @Operation(summary = "Realiza um get", method = "PUT")
+    @Operation(summary = "put todo", method = "PUT")
     @PutMapping()
     public ResponseEntity<?> update(@RequestBody @Valid RequestUpdateTodoResource todo) {
         return CustomResponse(todoService.update(todo));
     }
 
-    @Operation(summary = "Realiza um get", method = "DELETE")
+    @Operation(summary = "delete todo", method = "DELETE")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable UUID id) {
         return CustomResponse(todoService.delete(id));

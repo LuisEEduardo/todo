@@ -11,3 +11,13 @@ spring:
 hibernate:
   show_sql: true
   format_sql: true
+logging:
+  level:
+    org.springframework.security: TRACE
+api:
+  security:
+    token:
+      secret-key:
+        "G2J5V^>4NgQTjH}5DQ5^4#M~'WS05b,pX-[=,+bp#z{|=x+E"
+      issuer:
+        "todo-api"
