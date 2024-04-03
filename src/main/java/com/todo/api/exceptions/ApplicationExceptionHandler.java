@@ -3,6 +3,7 @@ package com.todo.api.exceptions;
 import com.todo.api.controllers.genericResponses.ErrorResponse;
 import com.todo.api.exceptions.custom.ForbiddenException;
 import com.todo.api.exceptions.custom.NotFoundException;
+import com.todo.utils.TimezoneUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -39,42 +40,42 @@ public class ApplicationExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleMethodNotFoundException(NotFoundException exception) {
         log.error("handleMethodNotFoundException => " + exception.getMessage());
-        return new ErrorResponse(false, exception.getMessage(), LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+        return new ErrorResponse(false, exception.getMessage(), TimezoneUtils.getLocalDateTimeWithTimeZone());
     }
 
     @ExceptionHandler(NoSuchElementException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleMethodNoSuchElementException(NoSuchElementException exception) {
         log.error("handleMethodNoSuchElementException => " + exception.getMessage());
-        return new ErrorResponse(false, exception.getMessage(), LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+        return new ErrorResponse(false, exception.getMessage(), TimezoneUtils.getLocalDateTimeWithTimeZone());
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleMethodException(Exception exception) {
         log.error("handleMethodException => " + exception.getMessage());
-        return new ErrorResponse(false, "Internal server error", LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+        return new ErrorResponse(false, "Internal server error", TimezoneUtils.getLocalDateTimeWithTimeZone());
     }
 
     @ExceptionHandler(ForbiddenException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public ErrorResponse handleForbiddenException(ForbiddenException exception) {
         log.error("handleForbiddenException => " + exception.getMessage());
-        return new ErrorResponse(false, exception.getMessage(), LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+        return new ErrorResponse(false, exception.getMessage(), TimezoneUtils.getLocalDateTimeWithTimeZone());
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleUsernameNotFoundException(UsernameNotFoundException exception) {
         log.error("handleUsernameNotFoundException => " + exception.getMessage());
-        return new ErrorResponse(false, exception.getMessage(), LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+        return new ErrorResponse(false, exception.getMessage(), TimezoneUtils.getLocalDateTimeWithTimeZone());
     }
 
     @ExceptionHandler(BadCredentialsException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ErrorResponse handleBadCredentialsException(BadCredentialsException exception) {
         log.error("handleBadCredentialsException => " + exception.getMessage());
-        return new ErrorResponse(false, "login or password invalid", LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
+        return new ErrorResponse(false, "login or password invalid", TimezoneUtils.getLocalDateTimeWithTimeZone());
     }
 
 }

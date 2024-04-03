@@ -5,6 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.todo.application.impl.UserDetailsImpl;
+import com.todo.utils.TimezoneUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -60,11 +61,11 @@ public class JwtTokenConfig {
     }
 
     public Instant creationDate() {
-        return ZonedDateTime.now(ZoneId.of("America/Sao_Paulo")).toInstant();
+        return ZonedDateTime.now(ZoneId.of(TimezoneUtils.getTimezone())).toInstant();
     }
 
     public Instant expiretionDate() {
-        return ZonedDateTime.now(ZoneId.of("America/Sao_Paulo")).plusHours(4).toInstant();
+        return ZonedDateTime.now(ZoneId.of(TimezoneUtils.getTimezone())).plusHours(4).toInstant();
     }
 
 }
